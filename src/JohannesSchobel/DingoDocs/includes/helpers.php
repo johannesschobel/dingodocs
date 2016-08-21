@@ -41,6 +41,22 @@ if (!function_exists('dingodocs_msg')) {
     }
 }
 
+/**
+ * Output the given text to the console.
+ *
+ * @param  string $output
+ * @return void
+ */
+if (!function_exists('output')) {
+    function output($output)
+    {
+        if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] == 'testing') {
+            return;
+        }
+        (new Symfony\Component\Console\Output\ConsoleOutput)->writeln($output);
+    }
+}
+
 if (!function_exists('dingodocs_formatJSON')) {
     function dingodocs_formatJSON( $json )
     {
