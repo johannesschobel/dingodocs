@@ -1,0 +1,82 @@
+body {
+    padding-bottom: 30px;
+}
+
+.affix-top {
+    position: relative;
+}
+
+.affix {
+    top: 70px;
+}
+
+body{
+    position:relative;
+}
+
+@media (min-width: 768px) {
+    .affix-top {
+        position: static;
+        width: 250px;
+    }
+
+    .affix {
+        position: fixed;
+        width: 250px;
+    }
+}
+
+.nav .active {
+    font-weight: bold;
+}
+
+.nav .nav {
+    display: none;
+}
+
+.nav .active .nav {
+    display: block;
+}
+
+.nav .nav a {
+    font-weight: normal;
+    font-size: .85em;
+}
+
+.nav .nav span {
+    margin: 0 5px 0 2px;
+}
+
+.nav .nav .active a,
+.nav .nav .active:hover a,
+.nav .nav .active:focus a {
+    font-weight: bold;
+    padding-left: 20px;
+    border-left: 3px solid #3c763d;
+}
+
+#scrollspy li a {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.nav .nav .active span,
+.nav .nav .active:hover span,
+.nav .nav .active:focus span {
+    /* display: none; */
+}
+
+#scrollspy > li.active > a {
+    border-left: 3px solid #3c763d;
+}
+
+.nav .nav a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.scrollabletextarea {
+    width: 100%;
+    resize: vertical;
+}

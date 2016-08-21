@@ -1,0 +1,19 @@
+.HEAD {
+    background-color: #777;
+}
+
+.GET {
+    background-color: #5cb85c;
+}
+
+.PUT {
+    background-color: #f0ad4e;
+}
+
+.POST {
+    background-color: #f0ad4e;
+}
+
+.DELETE {
+    background-color: #d9534f;
+}

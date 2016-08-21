@@ -1,0 +1,31 @@
+{
+    "name": "johannesschobel/dingodocs",
+    "description": "Automatically generate an API documentation for your Dingo/API application",
+    "license": "MIT",
+    "keywords" : [
+        "API", "Laravel", "Documentation"
+    ],
+    "authors": [
+        {
+            "name": "Johannes Schobel",
+            "email": "johannes.schobel@googlemail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "fzaninotto/faker": "~1.0",
+        "laravel/framework": "5.1.*",
+        "phpdocumentor/reflection-docblock": "^3.1",
+        "doctrine/annotations": "1.2.7"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-0": {
+            "JohannesSchobel\\DingoDocs": "src/"
+        },
+        "files": [
+            "src/JohannesSchobel/DingoDocs/includes/helpers.php"
+        ]
+    }
+}
