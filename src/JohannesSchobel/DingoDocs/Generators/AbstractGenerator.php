@@ -23,7 +23,7 @@ abstract class AbstractGenerator
         $this->reader->addNamespace('JohannesSchobel\\DingoDocs\\Models\\Annotations');
 
         AnnotationRegistry::registerLoader(function ($classfile) {
-            $path = str_replace(['JohannesSchobel\\DingoDocs\\Generators', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . ".php";
+            $path = str_replace(['JohannesSchobel\\DingoDocs\\Generators', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . '.php';
 
             if (file_exists($path)) {
                 require_once $path;
@@ -236,7 +236,7 @@ abstract class AbstractGenerator
 
                     // remove the first element
                     array_shift($data);
-                    $status->description = implode(" ", $data);
+                    $status->description = implode(' ', $data);
 
                     $result[] = $status;
                 }
@@ -384,7 +384,7 @@ abstract class AbstractGenerator
     /**
      * Returns the Validation Parameters for a given Validator
      *
-     * @param \JohannesSchobel\DingoDocs\Models\Route $route the "unfinished" route
+     * @param \JohannesSchobel\DingoDocs\Models\Route $route the 'unfinished' route
      * @param FormRequest | null $formRequest
      * @return array
      */
@@ -425,7 +425,7 @@ abstract class AbstractGenerator
     }
 
     protected function getRouteRequestAnnotation($route) {
-        $result = "";
+        $result = '';
 
         list($class, $method) = explode('@', $route);
         $reflection = new ReflectionClass($class);
@@ -692,7 +692,7 @@ abstract class AbstractGenerator
 
         // The format for specifying validation rules and parameters follows an
         // easy {rule}:{parameters} formatting convention. For instance the
-        // rule "max:200" states that the value may only be 200 characters long.
+        // rule 'max:200' states that the value may only be 200 characters long.
         if (strpos($rules, ':') !== false) {
             list($rules, $parameter) = explode(':', $rules, 2);
 
@@ -739,7 +739,7 @@ abstract class AbstractGenerator
     }
 
     private function extractTagValues($line) {
-        $result = explode(" ", $line);
+        $result = explode(' ', $line);
         $result = array_filter($result, function($value) { return $value !== ''; });
         return $result;
     }

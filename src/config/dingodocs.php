@@ -10,7 +10,7 @@ return [
      * The base folder for the output files. WITHOUT trailing slash!
      * Each version (see above) gets its own file.
      */
-    'outputpath' => "./public/dingodocs/",
+    'outputpath' => './public/dingodocs/',
 
     /*
      * Title of the documentation

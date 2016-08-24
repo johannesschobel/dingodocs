@@ -22,7 +22,7 @@ class DingoGenerator extends AbstractGenerator
         }
 
         $model                  = new Route();
-        $model->id              = md5($route->uri() . ":" . implode($route->getMethods()));
+        $model->id              = md5($route->uri() . ':' . implode($route->getMethods()));
         $model->uri             = $route->uri();
         $model->methods         = $route->getMethods();
         $model->group           = $this->getRouteGroupAnnotation($action['uses']);

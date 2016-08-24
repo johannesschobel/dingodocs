@@ -26,9 +26,9 @@ if (!function_exists('dingodocs_xcopy')) {
         $i = new DirectoryIterator($src);
         foreach ($i as $f) {
             if ($f->isFile()) {
-                copy($f->getRealPath(), "$dest/" . $f->getFilename());
+                copy($f->getRealPath(), '$dest/' . $f->getFilename());
             } else if (!$f->isDot() && $f->isDir()) {
-                dingodocs_xcopy($f->getRealPath(), "$dest/$f");
+                dingodocs_xcopy($f->getRealPath(), '$dest/$f');
             }
         }
     }
@@ -70,7 +70,7 @@ if (!function_exists('dingodocs_formatJSON')) {
         for( $i = 0; $i < $json_length; $i++ ) {
             $char = $json[$i];
             $new_line_level = NULL;
-            $post = "";
+            $post = '';
             if( $ends_line_level !== NULL ) {
                 $new_line_level = $ends_line_level;
                 $ends_line_level = NULL;
@@ -94,11 +94,11 @@ if (!function_exists('dingodocs_formatJSON')) {
                         break;
 
                     case ':':
-                        $post = " ";
+                        $post = ' ';
                         break;
 
-                    case " ": case "\t": case "\n": case "\r":
-                    $char = "";
+                    case ' ': case '\t': case '\n': case '\r':
+                    $char = '';
                     $ends_line_level = $new_line_level;
                     $new_line_level = NULL;
                     break;
@@ -107,7 +107,7 @@ if (!function_exists('dingodocs_formatJSON')) {
                 $in_escape = true;
             }
             if( $new_line_level !== NULL ) {
-                $result .= "\n".str_repeat( "\t", $new_line_level );
+                $result .= '\n'.str_repeat( '\t', $new_line_level );
             }
             $result .= $char.$post;
         }

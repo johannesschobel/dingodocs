@@ -15,7 +15,7 @@ class RuleDescriptionParser
      */
     public function __construct($rule = null)
     {
-        $this->rule = "dingodocs::rules.{$rule}";
+        $this->rule = 'dingodocs::rules.{$rule}';
     }
 
     /**

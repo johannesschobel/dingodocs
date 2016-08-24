@@ -40,11 +40,16 @@ class GenerateDocumentation extends Command
     {
         parent::__construct();
 
+        /*
+         * das ist ein test ob es klappt
+         * bla
+         */
+
         $this->reader = new SimpleAnnotationReader();
         $this->reader->addNamespace('JohannesSchobel\\DingoDocs\\Models\\Annotations');
 
         AnnotationRegistry::registerLoader(function ($classfile) {
-            $path = str_replace(['JohannesSchobel\\DingoDocs\\Commands', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . ".php";
+            $path = str_replace(['JohannesSchobel\\DingoDocs\\Commands', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . '.php';
 
             if (file_exists($path)) {
                 require_once $path;
@@ -80,7 +85,7 @@ class GenerateDocumentation extends Command
 
     private function generatePage($version, $routes) {
         $outputFolder = config('dingodocs.outputpath');
-        $outputFile = $outputFolder . $version . ".html";
+        $outputFile = $outputFolder . $version . '.html';
 
         $page = view('dingodocs::page')
             ->with('version', $version)
@@ -96,7 +101,7 @@ class GenerateDocumentation extends Command
      * @return array
      */
     private function getVersions() {
-        return config("dingodocs.versions");
+        return config('dingodocs.versions');
     }
 
     /**

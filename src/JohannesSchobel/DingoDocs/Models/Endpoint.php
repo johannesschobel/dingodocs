@@ -104,7 +104,7 @@ class Endpoint
      */
     public function getID()
     {
-        return md5($this->route->uri() . ":" . implode($this->route->getMethods()));
+        return md5($this->route->uri() . ':' . implode($this->route->getMethods()));
     }
 
     /**
@@ -558,7 +558,7 @@ class Endpoint
 
         // The format for specifying validation rules and parameters follows an
         // easy {rule}:{parameters} formatting convention. For instance the
-        // rule "max:200" states that the value may only be 200 characters long.
+        // rule 'max:200' states that the value may only be 200 characters long.
         if (strpos($rules, ':') !== false) {
             list($rules, $parameter) = explode(':', $rules, 2);
 
