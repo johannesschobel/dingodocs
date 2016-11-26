@@ -7,6 +7,11 @@ return [
     'versions' => ['v1'],
 
     /*
+     * debug messages? [I] are shown
+     */
+    'debug' => false,
+
+    /*
      * The base folder for the output files. WITHOUT trailing slash!
      * Each version (see above) gets its own file.
      */

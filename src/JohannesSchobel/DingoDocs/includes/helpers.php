@@ -26,7 +26,7 @@ if (!function_exists('dingodocs_xcopy')) {
         $i = new DirectoryIterator($src);
         foreach ($i as $f) {
             if ($f->isFile()) {
-                copy($f->getRealPath(), '$dest/' . $f->getFilename());
+                copy($f->getRealPath(), $dest . '/' . $f->getFilename());
             } else if (!$f->isDot() && $f->isDir()) {
                 dingodocs_xcopy($f->getRealPath(), '$dest/$f');
             }
@@ -37,6 +37,8 @@ if (!function_exists('dingodocs_xcopy')) {
 if (!function_exists('dingodocs_msg')) {
     function dingodocs_msg($type, $route, $output)
     {
+        if($type == "I") return;
+
         output('[' . $type . '] ' . $route->getAction()['uses'] . ' ' . $output);
     }
 }

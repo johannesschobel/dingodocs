@@ -123,7 +123,7 @@ class GenerateDocumentation extends Command
             $endpoint = new Endpoint($this->reader, $route);
 
             if($endpoint->getTransient() != null) {
-                dingodocs_msg('I', $route, ' is skipped because of @Transient annotation.');
+                dingodocs_msg('I', $route, 'is skipped because of @Transient annotation.');
                 continue;
             }
 
