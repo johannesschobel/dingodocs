@@ -128,11 +128,11 @@ abstract class AbstractGenerator
         $description = $phpdoc->getLongDescription()->getContents();
 
         if(empty($title)) {
-            dingodocs_msg('E', 'Route ' . $route . ' : Short Description is missing!');
+            dingodocs_msg('E', $route, 'Short Description is missing!');
         }
 
         if(empty($description)) {
-            dingodocs_msg('I', 'Route ' . $route . ' : Long Description is missing.');
+            dingodocs_msg('I', $route, 'Long Description is missing.');
         }
 
         return [
@@ -177,7 +177,7 @@ abstract class AbstractGenerator
             }
         }
 
-        dingodocs_msg('W', 'Route ' . $route . ' : No @' . config('dingodocs.tags.group') . ' annotation found. Using default group!');
+        dingodocs_msg('W', $route, 'No @' . config('dingodocs.tags.group') . ' annotation found. Using default group!');
         return $defaultgroup;
     }
 
@@ -244,7 +244,7 @@ abstract class AbstractGenerator
         }
 
         if(empty($result)) {
-            dingodocs_msg('W', 'Route ' . $route . ' : No @' . config('dingodocs.tags.status') . ' annotation found.');
+            dingodocs_msg('W', $route, 'No @' . config('dingodocs.tags.status') . ' annotation found.');
         }
 
         return $result;
@@ -270,13 +270,13 @@ abstract class AbstractGenerator
                         return $r;
                     }
                     else {
-                        dingodocs_msg('E', 'Route ' . $route . ' : Could not find Transformer Class ' . $class);
+                        dingodocs_msg('E', $route, 'Could not find Transformer Class ' . $class);
                     }
                 }
             }
         }
 
-        dingodocs_msg('W', 'Route ' . $route . ' : No @' . config('dingodocs.tags.transformer') .  ' annotation found.');
+        dingodocs_msg('W', $route, 'No @' . config('dingodocs.tags.transformer') .  ' annotation found.');
         return null;
     }
 
@@ -377,7 +377,7 @@ abstract class AbstractGenerator
             }
         }
 
-        dingodocs_msg('I', 'Route ' . $route . ' : No Validator (FormRequest) found.');
+        dingodocs_msg('I', $route, 'No Validator (FormRequest) found.');
         return null;
     }
 
@@ -441,7 +441,7 @@ abstract class AbstractGenerator
             }
         }
 
-        dingodocs_msg('W', 'Route ' . $route . ' : No @' . config('dingodocs.tags.request') .  ' annotation found.');
+        dingodocs_msg('W', $route, 'No @' . config('dingodocs.tags.request') .  ' annotation found.');
         return $result;
     }
 
