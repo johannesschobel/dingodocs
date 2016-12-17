@@ -44,7 +44,10 @@ class GenerateDocumentation extends Command
         $this->reader->addNamespace('JohannesSchobel\\DingoDocs\\Models\\Annotations');
 
         AnnotationRegistry::registerLoader(function ($classfile) {
-            $path = str_replace(['JohannesSchobel\\DingoDocs\\Commands', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . '.php';
+
+            $classfile = str_replace('\\', DIRECTORY_SEPARATOR, $classfile);
+
+            $path = str_replace(['JohannesSchobel' . DIRECTORY_SEPARATOR . 'DingoDocs' . DIRECTORY_SEPARATOR . 'Commands', '\\'], ['', DIRECTORY_SEPARATOR], __DIR__) . $classfile . '.php';
 
             if (file_exists($path)) {
                 require_once $path;
