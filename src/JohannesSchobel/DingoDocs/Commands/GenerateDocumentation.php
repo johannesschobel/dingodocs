@@ -40,11 +40,6 @@ class GenerateDocumentation extends Command
     {
         parent::__construct();
 
-        /*
-         * das ist ein test ob es klappt
-         * bla
-         */
-
         $this->reader = new SimpleAnnotationReader();
         $this->reader->addNamespace('JohannesSchobel\\DingoDocs\\Models\\Annotations');
 
@@ -119,6 +114,8 @@ class GenerateDocumentation extends Command
         $result = [];
 
         foreach($routes as $route) {
+
+            dingodocs_msg('I', $route, 'is being processed...');
 
             $endpoint = new Endpoint($this->reader, $route);
 

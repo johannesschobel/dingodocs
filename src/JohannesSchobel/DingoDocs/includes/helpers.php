@@ -37,8 +37,9 @@ if (!function_exists('dingodocs_xcopy')) {
 if (!function_exists('dingodocs_msg')) {
     function dingodocs_msg($type, $route, $output)
     {
-        if($type == "I") return;
-
+        if(config('dingodocs.debug') == false) {
+            if ($type == "I") return;
+        }
         output('[' . $type . '] ' . $route->getAction()['uses'] . ' ' . $output);
     }
 }
