@@ -278,6 +278,16 @@ class Endpoint
         return null;
     }
 
+    public function getRole() {
+        $annotation = $this->findAnnotationByType('Role');
+        if(!empty($annotation)) {
+            return $annotation->getValue();
+        }
+
+        dingodocs_msg('W', $this->route, 'has no @Role annotation!');
+        return false;
+    }
+
     /**
      * Get an annotation from the method by type.
      *

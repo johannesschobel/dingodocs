@@ -5,9 +5,21 @@
                 <h2 id="{!! $route->getID() !!}" class="text-info">{!! $route->getShortDescription() !!}</h2>
                 <hr />
                 <h3>{!! $route->getLongDescription() !!}</h3>
-                @if($route->getAuthentication() != null)
-                    @include('dingodocs::partials.main.authentication', compact($route))
-                @endif
+
+                <div class="row">
+                    <div class="col-md-7">
+                        @if($route->getAuthentication() != null)
+                            @include('dingodocs::partials.main.authentication', compact($route))
+                        @endif
+                    </div>
+                    <div class="col-md-5">
+                        @if($route->getRole() != false)
+                            @include('dingodocs::partials.main.role', compact($route))
+                        @endif
+                    </div>
+                </div>
+
+
 
                 <div class="row">
                     <div class="col-md-6">
