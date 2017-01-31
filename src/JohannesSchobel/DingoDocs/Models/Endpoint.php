@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use JohannesSchobel\DingoDocs\Models\Annotations\Authentication;
+use JohannesSchobel\DingoDocs\Models\Annotations\Exception;
 use JohannesSchobel\DingoDocs\Models\Annotations\Transformer;
 use JohannesSchobel\DingoDocs\Models\Annotations\Transient;
 use JohannesSchobel\DingoDocs\Parsers\RuleDescriptionParser;
@@ -209,6 +210,21 @@ class Endpoint
         // the annotation was not found - set the default value
         dingodocs_msg('I', $this->route, 'does not provide a Validator (FormRequest)!');
         return config('dingodocs.defaults.transformer');
+    }
+
+    /**
+     * Get the Exceptions for the route
+     *
+     * @return Exception | null
+     */
+    public function getExceptions() {
+        $annotation = $this->findMethodAnnotationByType('Exceptions');
+        if(isset($annotation)) {
+            return $annotation;
+        }
+
+        dingodocs_msg('I', $this->route, 'does not provide information for their Exceptions!');
+        return null;
     }
 
     public function getQueryParameters()

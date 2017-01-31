@@ -2,40 +2,32 @@
     <div class="row">
         <div class="col-md-9">
             <div>
-                <h2 id="{!! $route->getID() !!}" class="text-info">{!! $route->getShortDescription() !!}</h2>
+                <h3 id="{!! $route->getID() !!}" class="text-info">{!! $route->getShortDescription() !!}</h3>
                 <hr />
-                <h3>{!! $route->getLongDescription() !!}</h3>
+                <h4>{!! $route->getLongDescription() !!}</h4>
 
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
                         @if($route->getAuthentication() != null)
                             @include('dingodocs::partials.main.authentication', compact($route))
                         @endif
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         @if($route->getRole() != false)
                             @include('dingodocs::partials.main.role', compact($route))
                         @endif
                     </div>
                 </div>
 
-
-
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                @include('dingodocs::partials.main.method', compact($route))
-                            </div>
-                        </div>
+                    <div class="col-md-8">
+                        @include('dingodocs::partials.main.method', compact($route))
+                    </div>
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                @if( $route->getTransformer() != null )
-                                    @include('dingodocs::partials.main.transformer', compact($route))
-                                @endif
-                            </div>
-                        </div>
+                    <div class="col-md-4">
+                        @if( $route->getTransformer() != null )
+                            @include('dingodocs::partials.main.transformer', compact($route))
+                        @endif
                     </div>
                 </div>
 
@@ -46,15 +38,15 @@
                 @endif
 
                 <div class="row">
-                    <div class="col-md-6">
-                        @if($route->getQueryParameters() != null)
-                            @include('dingodocs::partials.main.queryparameter', compact($route))
+                    <div class="col-md-8">
+                        @if(! empty($route->getValidator()))
+                            @include('dingodocs::partials.main.validator', compact($route))
                         @endif
                     </div>
 
-                    <div class="col-md-6">
-                        @if(! empty($route->getValidator()))
-                            @include('dingodocs::partials.main.validator', compact($route))
+                    <div class="col-md-4">
+                        @if($route->getQueryParameters() != null)
+                            @include('dingodocs::partials.main.queryparameter', compact($route))
                         @endif
                     </div>
                 </div>
@@ -65,27 +57,17 @@
                     </div>
                 @endif
 
+                <div class="row">
+                    <div class="col-md-8">
+                        @if(! empty($route->getExceptions()))
+                            @include('dingodocs::partials.main.exception', compact($route))
+                        @endif
+                    </div>
+
+                </div>
 
             </div>
         </div>
 
-        <div class="col-md-3">
-            @if(! empty(""))
-            <div class="well well-sm">
-                <h4>HTTP Status Codes</h4>
-                <table class="table table-striped table-condensed">
-                    <thead>
-                    <tr>
-                        <th width="20%">Code</th>
-                        <th width="80%">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-            @endif
-        </div>
     </div>
 </section>

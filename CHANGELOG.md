@@ -2,8 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 2016-08-24
-##### Initial Commit
+##### 2017-01-30
+- Docs
+- Added the @Exceptions (and @Exception) Annotation
+##### 2016-08-24 (Initial Commit)
 - @Group
 - @Transient
 - @Authentication

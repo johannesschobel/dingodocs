@@ -1,5 +1,5 @@
 @if( count($route->getTransformer()->getTransformer()->getAvailableIncludes()) > 0 )
-<div class="panel panel-info">
+<div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Transformer includes</h3>
     </div>
