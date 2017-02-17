@@ -13,7 +13,6 @@ use JohannesSchobel\DingoDocs\Models\Annotations\Exception;
 use JohannesSchobel\DingoDocs\Models\Annotations\Transformer;
 use JohannesSchobel\DingoDocs\Models\Annotations\Transient;
 use JohannesSchobel\DingoDocs\Parsers\RuleDescriptionParser;
-use phpDocumentor\Reflection\DocBlock;
 use ReflectionClass;
 use Dingo\Api\Routing\Route;
 
@@ -43,6 +42,8 @@ class Endpoint
      */
     protected $route;
 
+    protected $docBlockFactory;
+
     /**
      * Endpoint constructor.
      * @param SimpleAnnotationReader $reader
@@ -57,6 +58,8 @@ class Endpoint
 
         $this->classAnnotations = $this->getClassAnnotations();
         $this->methodAnnotations = $this->getMethodAnnotations();
+
+        $this->docBlockFactory = \phpDocumentor\Reflection\DocBlockFactory::createInstance();
     }
 
     /**
@@ -66,11 +69,23 @@ class Endpoint
      */
     public function getShortDescription()
     {
-        $name = (new DocBlock($this->getMethodReflector()))->getShortDescription();
+        $name = $this->getURI();
+
+        $reflector = $this->getMethodReflector();
+        $comment = $reflector->getDocComment();
+        if(! is_string($comment)) {
+            // the docblock is missing!
+            dingodocs_msg('E', $this->route, 'does not provide a docblock at all!');
+            return $name;
+        }
+        $docblock = $this->docBlockFactory->create($comment);
+
+        $name = $docblock->getSummary();
         if(empty($name)) {
             dingodocs_msg('E', $this->route, 'does not provide a short description!');
             $name = $this->getURI();
         }
+
         return $name;
     }
 
@@ -81,10 +96,22 @@ class Endpoint
      */
     public function getLongDescription()
     {
-        $description = (new DocBlock($this->getMethodReflector()))->getLongDescription()->getContents();
-        if(empty($description)) {
+        $description = "";
+
+        $reflector = $this->getMethodReflector();
+        $comment = $reflector->getDocComment();
+        if(! is_string($comment)) {
+            // the docblock is missing!
+            dingodocs_msg('E', $this->route, 'does not provide a docblock at all!');
+            return $description;
+        }
+        $docblock = $this->docBlockFactory->create($comment);
+
+        $description = $docblock->getDescription();
+        if (empty($description)) {
             dingodocs_msg('W', $this->route, 'does not provide a long description!');
         }
+
         return $description;
     }
 
