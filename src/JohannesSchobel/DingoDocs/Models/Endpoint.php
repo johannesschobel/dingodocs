@@ -433,7 +433,6 @@ class Endpoint
     protected function parseValidationRule($rule, &$attributeData, $seed)
     {
         $faker = Factory::create();
-        $faker->seed(crc32($seed));
 
         $parsedRule = $this->parseStringRule($rule);
         $parsedRule[0] = $this->normalizeRule($parsedRule[0]);
